@@ -1,0 +1,35 @@
+generated: '2026-07-21'
+method: searched
+description: >-
+  Probe of the /.well-known/ discovery surface on Tiptop's hosts. No well-known
+  documents are published: docs.tiptop.com and api.tiptop.com return 404 for
+  every probed path, and tiptop.com 301-redirects all paths (and its homepage)
+  to https://mother.ai/ — the company pivoted to Mother Computer Inc. and the
+  tiptop.com TLS certificate has expired. Absence recorded as valid data.
+probed: '2026-07-21'
+hosts:
+  - host: https://docs.tiptop.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /llms.txt, status: 404}
+  - host: https://api.tiptop.com
+    notes: TLS certificate expired (probe performed without verification); server live, returns 404 at root.
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://tiptop.com
+    notes: TLS certificate expired; every path 301-redirects to https://mother.ai/.
+    documents:
+      - {path: /.well-known/security.txt, status: 301, redirect: https://mother.ai/}
+      - {path: /.well-known/openid-configuration, status: 301, redirect: https://mother.ai/}
+      - {path: /.well-known/oauth-authorization-server, status: 301, redirect: https://mother.ai/}
+      - {path: /.well-known/api-catalog, status: 301, redirect: https://mother.ai/}
+      - {path: /.well-known/ai-plugin.json, status: 301, redirect: https://mother.ai/}
+      - {path: /security.txt, status: 301, redirect: https://mother.ai/}

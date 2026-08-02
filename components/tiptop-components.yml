@@ -1,0 +1,42 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.tiptop.com/direct/tiptop-js-reference/overview/
+description: >-
+  Tiptop's client-side / embeddable surfaces: the tiptop.js browser library
+  that renders promotional messaging and launches the hosted checkout modal,
+  the tiptop-promo-widget HTML class for on-page financing/trade-in messaging,
+  and platform apps (Shopify payments app, Salesforce Commerce Cloud cartridge,
+  Magento 2 module) that embed the same experience. Distinct from server-side
+  SDKs (see packages/).
+families:
+  - family: checkout
+    loader: https://cdn.tiptop.com/js/v1/tiptop.js
+    components:
+      - name: Tiptop Checkout modal
+        kind: hosted modal / redirect
+        api: tiptop.checkout(checkoutObject); tiptop.checkout.open()
+        description: >-
+          Sends the checkout object to Tiptop's servers and launches the secure
+          payment portal as a modal over the merchant page (or a redirect flow).
+          Callbacks: onFail, onCancel, onSuccess (returns checkout_id), onOpen
+          (returns token), onValidationError — redirect flow only.
+        docs: https://docs.tiptop.com/direct/tiptop-js-reference/tiptop-checkout/
+      - name: tiptop.ui.ready
+        kind: lifecycle hook
+        description: Callback fired once tiptop.js has finished loading.
+        docs: https://docs.tiptop.com/direct/tiptop-js-reference/overview/
+  - family: promotional-messaging
+    loader: https://cdn.tiptop.com/js/v1/tiptop.js
+    components:
+      - name: tiptop-promo-widget
+        kind: HTML class widget
+        description: >-
+          Displays Tiptop promotional messaging with an action to open the
+          promotional modal. Required attributes: data-amount (price in USD
+          cents) and data-page-type (cart | payment | product).
+        docs: https://docs.tiptop.com/direct/promotional-messaging/html-reference/
+  - family: platform-apps
+    components:
+      - {name: Shopify payments app, kind: platform app, docs: 'https://docs.tiptop.com/shopify/get-started/'}
+      - {name: Salesforce Commerce Cloud cartridge (int_tiptop_sfra), kind: platform cartridge, docs: 'https://docs.tiptop.com/salesforce/sandbox-setup-guide/'}
+      - {name: Magento 2 payment module (tiptop/payment-gateway), kind: platform module, docs: 'https://github.com/tiptopxyz/magento'}

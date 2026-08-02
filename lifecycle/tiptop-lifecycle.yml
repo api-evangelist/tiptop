@@ -1,0 +1,29 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.tiptop.com/
+description: >-
+  Lifecycle posture of the Tiptop platform. The API is versioned by URI path
+  (/v1/). No deprecation policy, sunset-header support, SLA, or status page is
+  published (status.tiptop.com does not resolve). Company-level lifecycle
+  signal: as of 2026-07-21 tiptop.com 301-redirects to https://mother.ai/
+  (Mother Computer Inc.) and its TLS certificate has expired, while
+  docs.tiptop.com, api.tiptop.com, cdn.tiptop.com, the tiptopxyz GitHub org,
+  and the Packagist package remain live — the Tiptop trade-in payments product
+  appears wound down or absorbed into a successor company.
+versioning:
+  scheme: uri-path
+  current: v1
+  evidence: /v1/direct/order/capture-request, /v1/direct/order/void-request, /v1/direct/order/refund-request
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No deprecation policy published.
+sla: null
+status_page: null
+status_page_probe: {host: status.tiptop.com, result: NXDOMAIN, probed: '2026-07-21'}
+company_status:
+  probed: '2026-07-21'
+  website_redirect: {from: 'https://tiptop.com/', to: 'https://mother.ai/', http_status: 301}
+  tls: tiptop.com and api.tiptop.com certificates expired at probe time
+  live_surfaces: [docs.tiptop.com, api.tiptop.com, cdn.tiptop.com, blog.tiptop.xyz, github.com/tiptopxyz, packagist.org/packages/tiptop/payment-gateway]
+deprecated_operations: []

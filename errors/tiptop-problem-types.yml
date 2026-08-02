@@ -1,0 +1,47 @@
+generated: '2026-07-21'
+method: searched
+format: http-status
+source: https://docs.tiptop.com/direct/order-management-apis/capture/
+description: >-
+  Error surface of the Tiptop Direct Order Management APIs, captured from the
+  response-code tables on the Capture, Void, and Refund reference pages. Tiptop
+  publishes no RFC 9457 problem-details format and no error-body schema — the
+  documented contract is plain HTTP status codes. Client-side, tiptop.js
+  surfaces failures through the onFail and onValidationError checkout
+  callbacks.
+docs:
+  - https://docs.tiptop.com/direct/order-management-apis/capture/
+  - https://docs.tiptop.com/direct/order-management-apis/void/
+  - https://docs.tiptop.com/direct/order-management-apis/refund/
+problems:
+  - status: 201
+    title: Request created
+    detail: Success response for capture-request, void-request, and refund-request.
+    operations: [capture-request, void-request, refund-request]
+  - status: 400
+    title: Headers or request body were not provided correctly
+    remediation: Send Content-Type application/json, the api-key header, and a valid JSON body with a required orderID string.
+    operations: [capture-request, void-request, refund-request]
+  - status: 401
+    title: API Key not valid
+    remediation: Use the private/server API key for the correct environment (test vs live keys are not interchangeable).
+    operations: [capture-request, void-request, refund-request]
+  - status: 403
+    title: API Key cannot access this resource
+    operations: [capture-request, void-request, refund-request]
+  - status: 422
+    title: Order state does not allow the request
+    detail: >-
+      Capture — the order is in a state where capture cannot be requested,
+      e.g. refunded. Refund — the order is in a state where refund cannot be
+      requested, e.g. void.
+    operations: [capture-request, void-request, refund-request]
+  - status: 500
+    title: Internal server error
+    operations: [capture-request, void-request, refund-request]
+client_callbacks:
+  source: https://docs.tiptop.com/direct/tiptop-js-reference/tiptop-checkout/
+  callbacks:
+    - {name: onFail, description: Invoked if there is a failure during checkout.}
+    - {name: onCancel, description: Invoked if the customer exits or cancels during checkout.}
+    - {name: onValidationError, description: Alerts you in case of validation errors during the checkout request.}

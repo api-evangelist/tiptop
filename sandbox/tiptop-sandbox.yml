@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.tiptop.com/api-keys/
+description: >-
+  Tiptop's test/sandbox surface. Tiptop separates test (sandbox) and live modes
+  by API key pair — each account gets four keys — and runs dedicated staging
+  hosts for the API and the tiptop.js CDN build. Objects created in one mode
+  cannot be manipulated by the other. Partner onboarding requires completing a
+  test order with the test API key before the production key is issued. No
+  magic test values (test cards, fixture tokens, test clocks) are published in
+  the docs.
+docs:
+  - https://docs.tiptop.com/api-keys/
+  - https://docs.tiptop.com/direct/get-started/
+  - https://docs.tiptop.com/salesforce/sandbox-setup-guide/
+modes:
+  - name: test
+    notes: >-
+      Sandbox mode — public + private test key pair; isolated from live data.
+      Used to complete the onboarding test order.
+  - name: live
+    notes: Public + private production key pair, issued after the test order is completed and the application approved.
+hosts:
+  - {environment: test, api: 'https://api-stage.tiptop.com/', script: 'https://cdn-stage.tiptop.com/js/v1/tiptop.js', source: 'https://github.com/tiptopxyz/magento/blob/master/etc/config.xml'}
+  - {environment: live, api: 'https://api.tiptop.com/', script: 'https://cdn.tiptop.com/js/v1/tiptop.js'}
+test_values: []
+test_values_notes: No published test cards, magic identifiers, or fixture tooling; the sandbox is exercised with real checkout flows under test keys.
+platform_sandboxes:
+  - platform: salesforce-commerce-cloud
+    guide: https://docs.tiptop.com/salesforce/sandbox-setup-guide/
+    notes: 'Cartridge int_tiptop_sfra:int_tiptop imported via Tiptop.zip in a SFCC sandbox site.'

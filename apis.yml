@@ -1,22 +1,108 @@
 aid: tiptop
-name: TipTop
-description: TipTop is a company surfaced as a portfolio company of a16z and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+name: Tiptop
+description: >-
+  Tiptop (Tiptop Labs) is the payments company founded by Postmates co-founder
+  Bastian Lehmann that lets shoppers trade in items they already own for
+  instant credit at checkout, alongside pay-over-time options. Merchants
+  integrate through a Shopify payments app, a Salesforce Commerce Cloud
+  cartridge, a Magento 2 module, or the Direct API — the tiptop.js browser
+  library plus server-side order-management endpoints (capture, void, refund)
+  authenticated with an api-key header. Backed by a16z ($23M Series A, 2022).
+  Note: as of July 2026 tiptop.com redirects to mother.ai (Mother Computer
+  Inc.) and its TLS certificate has expired, while docs.tiptop.com,
+  api.tiptop.com, cdn.tiptop.com, and the first-party packages remain live.
 url: https://raw.githubusercontent.com/api-evangelist/tiptop/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://raw.githubusercontent.com/tiptopxyz/magento/master/view/adminhtml/web/images/tiptop-logo.svg
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - a16z
-x-tier: stub
-x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Payments
+- FinTech
+- Trade-In
+- Checkout
+- Commerce
+- Pay Over Time
+apis:
+- name: Tiptop Direct Order Management API
+  description: >-
+    Server-side order-management endpoints for the Tiptop Direct integration:
+    request capture, void (full or partial), and refund (full or partial) of
+    orders created through the tiptop.js checkout, addressed by the
+    partner-generated orderID. JSON over HTTPS with an api-key header;
+    versioned under /v1/; staging host api-stage.tiptop.com.
+  humanURL: https://docs.tiptop.com/direct/how-it-works/
+  baseURL: https://api.tiptop.com
+  tags:
+  - Payments
+  - Orders
+  - Refunds
+  properties:
+  - type: Documentation
+    url: https://docs.tiptop.com/direct/how-it-works/
+  - type: APIReference
+    url: https://docs.tiptop.com/direct/order-management-apis/capture/
+common:
+- type: DomainSecurity
+  url: security/tiptop-domain-security.yml
+- type: Documentation
+  url: https://docs.tiptop.com/
+- type: GettingStarted
+  url: https://docs.tiptop.com/direct/get-started/
+- type: APIReference
+  url: https://docs.tiptop.com/direct/order-management-apis/capture/
+- type: GitHubOrganization
+  url: https://github.com/tiptopxyz
+- type: Blog
+  url: https://blog.tiptop.xyz/
+- type: Packages
+  url: packages/tiptop-packages.yml
+- type: SDKs
+  url: packages/tiptop-packages.yml
+- type: Components
+  url: components/tiptop-components.yml
+- type: Authentication
+  url: authentication/tiptop-authentication.yml
+- type: Sandbox
+  url: sandbox/tiptop-sandbox.yml
+- type: Conventions
+  url: conventions/tiptop-conventions.yml
+- type: ErrorCatalog
+  url: errors/tiptop-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/tiptop-lifecycle.yml
+- type: Conformance
+  url: conformance/tiptop-conformance.yml
+- type: DataModel
+  url: data-model/tiptop-data-model.yml
+- type: MCPServer
+  url: mcp/tiptop-mcp.yml
+- type: LLMsTxt
+  url: llms/tiptop-llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 13
+  pass: local-v1

@@ -1,0 +1,33 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: https://docs.tiptop.com/direct/order-management-apis/capture/
+description: >-
+  No official Tiptop MCP server was found (none in the docs, the tiptopxyz
+  GitHub org, npm, or the MCP registries). This is a candidate tool list
+  derived from the three documented Direct Order Management endpoints; Tiptop
+  publishes no OpenAPI, so tools are grounded in the docs pages directly.
+server:
+  name: tiptop
+  transport: http
+  url: null
+tools:
+  - name: capture_order
+    description: Request capture of an authorized order by partner orderID (POST /v1/direct/order/capture-request).
+    source_operation: https://docs.tiptop.com/direct/order-management-apis/capture/
+    inputs: [orderID]
+  - name: void_order
+    description: >-
+      Request void/cancellation of an order by partner orderID, optionally a
+      partial amount in cents (POST /v1/direct/order/void-request).
+    source_operation: https://docs.tiptop.com/direct/order-management-apis/void/
+    inputs: [orderID, amount]
+  - name: refund_order
+    description: >-
+      Request a refund of an order by partner orderID, optionally a partial
+      amount in cents (POST /v1/direct/order/refund-request).
+    source_operation: https://docs.tiptop.com/direct/order-management-apis/refund/
+    inputs: [orderID, amount]
+authentication:
+  scheme: api-key header (private/server key)
+  detail: authentication/tiptop-authentication.yml

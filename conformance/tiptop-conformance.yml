@@ -1,0 +1,45 @@
+generated: '2026-07-21'
+method: derived
+source: docs.tiptop.com + github.com/tiptopxyz/magento (no OpenAPI published)
+description: >-
+  Standards conformance of the Tiptop Direct API, derived from the published
+  documentation and first-party integration code. Tiptop publishes no
+  compliance/certification program (no trust center, no SOC 2 / PCI DSS
+  attestation pages were found), so no Compliance pointer is emitted.
+standards:
+  - id: https-tls
+    conforms: true
+    evidence: All documented endpoints and script loaders are HTTPS.
+  - id: json-request-response
+    conforms: true
+    evidence: 'Order Management APIs take Content-Type: application/json bodies (TransferFactory.php).'
+  - id: uri-path-versioning
+    conforms: true
+    evidence: Endpoints are versioned under /v1/.
+  - id: api-key-authentication
+    conforms: true
+    evidence: api-key header (server) and public_api_key (browser) documented at docs.tiptop.com/api-keys/.
+  - id: oauth2
+    conforms: false
+    evidence: No OAuth flows documented; key-based auth only.
+  - id: oidc
+    conforms: false
+    evidence: /.well-known/openid-configuration returns 404 on all hosts.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors are plain HTTP status codes; no application/problem+json documented.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: /.well-known/security.txt returns 404 (docs, api) or redirects to mother.ai (www).
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: No deprecation/sunset policy published.
+  - id: idempotency-key
+    conforms: false
+    evidence: No idempotency-key mechanism documented.
+  - id: pagination
+    conforms: false
+    evidence: No list endpoints in the published surface.
+  - id: openapi
+    conforms: false
+    evidence: No OpenAPI/Swagger document published on docs.tiptop.com or the tiptopxyz GitHub org.

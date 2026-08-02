@@ -1,0 +1,49 @@
+generated: '2026-07-21'
+method: searched
+docs: https://docs.tiptop.com/api-keys/
+source: >-
+  https://docs.tiptop.com/api-keys/ plus the first-party Magento gateway source
+  (https://github.com/tiptopxyz/magento — Gateway/Http/TransferFactory.php sets
+  the api-key request header). Tiptop publishes no OpenAPI, so this profile is
+  captured from docs and first-party integration code rather than derived from
+  a spec.
+description: >-
+  Tiptop authenticates with API keys. Each partner account gets four keys — a
+  public and private key pair for both the test (sandbox) and live
+  environments. Public keys identify the account client-side (tiptop.js,
+  mobile) and are used to generate tokens; private (server) keys are sent on
+  server-to-server Order Management API calls in the api-key request header.
+  Objects created in one mode cannot be manipulated by the other.
+summary:
+  types: [apiKey]
+  api_key_in: [header]
+  oauth2_flows: []
+schemes:
+  - name: api-key
+    type: apiKey
+    in: header
+    parameter: api-key
+    audience: server
+    description: >-
+      Private/server API key sent as the api-key header on Order Management API
+      requests (capture, void, refund). Provided via secure email or the
+      merchant dashboard. Requests are JSON (Content-Type: application/json).
+    sources:
+      - https://docs.tiptop.com/direct/order-management-apis/capture/
+      - https://github.com/tiptopxyz/magento/blob/master/Gateway/Http/TransferFactory.php
+  - name: public_api_key
+    type: apiKey
+    in: client-config
+    parameter: public_api_key
+    audience: browser
+    description: >-
+      Public API key set in the _tiptop_config object when loading tiptop.js;
+      safely shareable, used to initialize the checkout/messaging library and
+      generate tokens for further authentication.
+    sources:
+      - https://docs.tiptop.com/direct/tiptop-js-reference/overview/
+      - https://docs.tiptop.com/api-keys/
+environments:
+  - {name: test, notes: Sandbox mode; test key pair; staging hosts api-stage.tiptop.com and cdn-stage.tiptop.com.}
+  - {name: live, notes: Production key pair issued after a completed test order during partner onboarding.}
+key_retrieval: Merchant Portal (https://tiptop.com/partner/auth — as of 2026-07-21 this redirects to https://mother.ai/)

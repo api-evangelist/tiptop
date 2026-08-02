@@ -1,0 +1,36 @@
+generated: '2026-07-21'
+method: derived
+source: https://docs.tiptop.com/direct/objects/checkout-object/
+description: >-
+  Entity graph of the Tiptop Direct integration, derived from the documented
+  object reference (Checkout, Item, Address, Discount) and the order-management
+  endpoints. Tiptop publishes no OpenAPI; this model is read directly from the
+  docs' attribute tables.
+entities:
+  - name: Checkout
+    id_field: orderID
+    docs: https://docs.tiptop.com/direct/objects/checkout-object/
+    fields: [orderID, currency, totalCost, taxCost, shippingCost, items, addresses, discounts]
+    notes: Amounts are integer cents; orderID is the partner-generated order identifier.
+  - name: Item
+    docs: https://docs.tiptop.com/direct/objects/item-object/
+    fields: [sku, imageURL, name, quantity, amount, currency]
+  - name: Address
+    docs: https://docs.tiptop.com/direct/objects/address-object/
+    fields: [firstName, lastName, street1, street2, city, state, zip, email, phoneNumber, addressType, countryCode]
+    notes: addressType is shipping or billing.
+  - name: Discount
+    docs: https://docs.tiptop.com/direct/objects/discount-object/
+    fields: [name, code, discountAmount]
+  - name: Order
+    id_field: orderID
+    docs: https://docs.tiptop.com/direct/order-management-apis/capture/
+    notes: >-
+      Server-side order addressed by the same partner orderID via
+      capture-request, void-request, and refund-request; void and refund accept
+      an optional partial amount.
+relationships:
+  - {from: Checkout, to: Item, type: has_many, via: items, required: true}
+  - {from: Checkout, to: Address, type: has_many, via: addresses, required: false}
+  - {from: Checkout, to: Discount, type: has_many, via: discounts, required: false}
+  - {from: Order, to: Checkout, type: has_one, via: orderID, notes: The checkout success callback returns a checkout_id used for authorization of the order.}
