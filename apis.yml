@@ -35,6 +35,14 @@ modified: '2026-07-21'
 tags:
 - Company
 - Payments
+- Fintech
+- Trade-In
+- Checkout
+- Commerce
+- Pay Over Time
+tags_raw:
+- Company
+- Payments
 - FinTech
 - Trade-In
 - Checkout
@@ -51,6 +59,10 @@ apis:
   humanURL: https://docs.tiptop.com/direct/how-it-works/
   baseURL: https://api.tiptop.com
   tags:
+  - Payments
+  - Order
+  - Refunds
+  tags_raw:
   - Payments
   - Orders
   - Refunds
