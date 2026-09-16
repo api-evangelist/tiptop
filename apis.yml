@@ -1,16 +1,13 @@
 aid: tiptop
 name: Tiptop
-description: >-
-  Tiptop (Tiptop Labs) is the payments company founded by Postmates co-founder
-  Bastian Lehmann that lets shoppers trade in items they already own for
-  instant credit at checkout, alongside pay-over-time options. Merchants
-  integrate through a Shopify payments app, a Salesforce Commerce Cloud
-  cartridge, a Magento 2 module, or the Direct API — the tiptop.js browser
-  library plus server-side order-management endpoints (capture, void, refund)
-  authenticated with an api-key header. Backed by a16z ($23M Series A, 2022).
-  Note: as of July 2026 tiptop.com redirects to mother.ai (Mother Computer
-  Inc.) and its TLS certificate has expired, while docs.tiptop.com,
-  api.tiptop.com, cdn.tiptop.com, and the first-party packages remain live.
+description: 'Tiptop (Tiptop Labs) is the payments company founded by Postmates co-founder Bastian Lehmann
+  that lets shoppers trade in items they already own for instant credit at checkout, alongside pay-over-time
+  options. Merchants integrate through a Shopify payments app, a Salesforce Commerce Cloud cartridge,
+  a Magento 2 module, or the Direct API — the tiptop.js browser library plus server-side order-management
+  endpoints (capture, void, refund) authenticated with an api-key header. Backed by a16z ($23M Series
+  A, 2022). Note: as of July 2026 tiptop.com redirects to mother.ai (Mother Computer Inc.) and its TLS
+  certificate has expired, while docs.tiptop.com, api.tiptop.com, cdn.tiptop.com, and the first-party
+  packages remain live.'
 url: https://raw.githubusercontent.com/api-evangelist/tiptop/refs/heads/main/apis.yml
 deliveryModel:
   model: library
@@ -44,7 +41,7 @@ x-backed-by:
 - a16z
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-07-21'
+modified: '2026-09-16'
 tags:
 - Company
 - Payments
@@ -63,12 +60,10 @@ tags_raw:
 - Pay Over Time
 apis:
 - name: Tiptop Direct Order Management API
-  description: >-
-    Server-side order-management endpoints for the Tiptop Direct integration:
-    request capture, void (full or partial), and refund (full or partial) of
-    orders created through the tiptop.js checkout, addressed by the
-    partner-generated orderID. JSON over HTTPS with an api-key header;
-    versioned under /v1/; staging host api-stage.tiptop.com.
+  description: 'Server-side order-management endpoints for the Tiptop Direct integration: request capture,
+    void (full or partial), and refund (full or partial) of orders created through the tiptop.js checkout,
+    addressed by the partner-generated orderID. JSON over HTTPS with an api-key header; versioned under
+    /v1/; staging host api-stage.tiptop.com.'
   humanURL: https://docs.tiptop.com/direct/how-it-works/
   baseURL: https://api.tiptop.com
   tags:
@@ -85,6 +80,8 @@ apis:
   - type: APIReference
     url: https://docs.tiptop.com/direct/order-management-apis/capture/
 common:
+- type: Website
+  url: https://tiptop.com
 - type: DomainSecurity
   url: security/tiptop-domain-security.yml
 - type: Documentation
@@ -119,7 +116,10 @@ common:
   url: data-model/tiptop-data-model.yml
 - type: X-MCPServerCandidate
   url: mcp/tiptop-mcp.yml
-  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate
+    — a tool list derived from the published API contracts, not an existing server. The scorer already
+    read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type
+    surfaces with a server that does not exist.'
 - type: LLMsTxt
   url: llms/tiptop-llms.txt
 maintainers:
